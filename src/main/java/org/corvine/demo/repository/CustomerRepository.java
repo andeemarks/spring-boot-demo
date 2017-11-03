@@ -1,5 +1,6 @@
-package org.corvine.demo;
+package org.corvine.demo.repository;
 
+import org.corvine.demo.domain.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.corvine.demo;
+package org.corvine.demo.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,5 +28,4 @@ public class Customer {
                 "Customer[id=%d, firstName='%s', lastName='%s']",
                 id, firstName, lastName);
     }
-
 }

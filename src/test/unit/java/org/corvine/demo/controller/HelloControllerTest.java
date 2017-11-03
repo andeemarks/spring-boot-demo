@@ -1,4 +1,4 @@
-package org.corvine.demo;
+package org.corvine.demo.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
