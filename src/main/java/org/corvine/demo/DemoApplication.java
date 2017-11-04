@@ -17,7 +17,6 @@ public class DemoApplication {
     private static final Logger log = LoggerFactory.getLogger(DemoApplication.class);
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
@@ -25,9 +24,9 @@ public class DemoApplication {
     public CommandLineRunner demo(CustomerRepository repository) {
         return (args) -> {
             saveSampleCustomers(repository);
-            showAllCustomers(repository);
-            showCustomerForId(repository, 1L);
-            showCustomersMatchingName(repository, "Bauer");
+//            showAllCustomers(repository);
+//            showCustomerForId(repository, 1L);
+//            showCustomersMatchingName(repository, "Bauer");
         };
     }
 
