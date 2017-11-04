@@ -24,36 +24,45 @@ public class DemoApplication {
     @Bean
     public CommandLineRunner demo(CustomerRepository repository) {
         return (args) -> {
-            // save a couple of customers
-            repository.save(new Customer("Jack", "Bauer"));
-            repository.save(new Customer("Chloe", "O'Brian"));
-            repository.save(new Customer("Kim", "Bauer"));
-            repository.save(new Customer("David", "Palmer"));
-            repository.save(new Customer("Michelle", "Dessler"));
-
-            // fetch all customers
-            log.info("Customers found with findAll():");
-            log.info("-------------------------------");
-            for (Customer customer : repository.findAll()) {
-                log.info(customer.toString());
-            }
-            log.info("");
-
-            // fetch an individual customer by ID
-            Customer customer = repository.findOne(1L);
-            log.info("Customer found with findOne(1L):");
-            log.info("--------------------------------");
-            log.info(customer.toString());
-            log.info("");
-
-            // fetch customers by last name
-            log.info("Customer found with findByLastName('Bauer'):");
-            log.info("--------------------------------------------");
-            for (Customer bauer : repository.findByLastName("Bauer")) {
-                log.info(bauer.toString());
-            }
-            log.info("");
+            saveSampleCustomers(repository);
+            showAllCustomers(repository);
+            showCustomerForId(repository, 1L);
+            showCustomersMatchingName(repository, "Bauer");
         };
+    }
+
+    private void showCustomersMatchingName(CustomerRepository repository, String lastName) {
+        log.info("Customer found with findByLastName('" + lastName + "'):");
+        log.info("--------------------------------------------");
+        for (Customer customer : repository.findByLastName(lastName)) {
+            log.info(customer.toString());
+        }
+        log.info("");
+    }
+
+    private void showCustomerForId(CustomerRepository repository, long id) {
+        Customer customer = repository.findOne(id);
+        log.info("Customer found with findOne(" + id + "):");
+        log.info("--------------------------------");
+        log.info(customer.toString());
+        log.info("");
+    }
+
+    private void showAllCustomers(CustomerRepository repository) {
+        log.info("Customers found with findAll():");
+        log.info("-------------------------------");
+        for (Customer customer : repository.findAll()) {
+            log.info(customer.toString());
+        }
+        log.info("");
+    }
+
+    private void saveSampleCustomers(CustomerRepository repository) {
+        repository.save(new Customer("Jack", "Bauer"));
+        repository.save(new Customer("Chloe", "O'Brian"));
+        repository.save(new Customer("Kim", "Bauer"));
+        repository.save(new Customer("David", "Palmer"));
+        repository.save(new Customer("Michelle", "Dessler"));
     }
 
     //    @Bean
