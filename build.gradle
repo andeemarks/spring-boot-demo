@@ -34,6 +34,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-integration')
     compile('org.springframework.integration:spring-integration-feed')
 	compile('org.liquibase:liquibase-core')
+	compile('javax.cache:cache-api')
+	compile('org.ehcache:ehcache')
     compile('org.springframework.boot:spring-boot-starter-jetty')
     compile('org.springframework.boot:spring-boot-starter-web') { exclude module: 'spring-boot-starter-tomcat' }
 	compile('org.springframework.boot:spring-boot-starter-mustache')

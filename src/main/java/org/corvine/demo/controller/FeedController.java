@@ -19,21 +19,26 @@ public class FeedController {
 
     @RequestMapping("/feed")
     public String index() {
+        List<String> items = new ArrayList<>();
+        loadItems(items);
+
+        return items.toString();
+    }
+
+    private void loadItems(List<String> items) {
         ApplicationContext context = new ClassPathXmlApplicationContext("/feed/swoppy.xml");
 
         PollableChannel feedChannel = context.getBean("swoppyFeed", PollableChannel.class);
 
         Message<SyndEntry> message;
-        List<String> items = new ArrayList<>();
         do {
+            //noinspection unchecked
             message = (Message<SyndEntry>) feedChannel.receive(3000);
             if (message != null) {
                 SyndEntry entry = message.getPayload();
                 items.add(entry.getTitle());
             }
         } while (message != null);
-
-        return items.toString();
     }
 
 }
