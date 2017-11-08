@@ -1,5 +1,6 @@
 package org.corvine.demo.controller;
 
+import org.corvine.demo.domain.Item;
 import org.corvine.demo.repository.FeedRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class FeedController {
 
     @RequestMapping("/feed")
     public String index() {
-        List<String> items = feedRepository.findAllItems();
+        List<Item> items = feedRepository.findAllItems();
 
         return items.toString();
     }

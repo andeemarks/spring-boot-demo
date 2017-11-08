@@ -1,6 +1,7 @@
 package org.corvine.demo.repository;
 
 import com.rometools.rome.feed.synd.SyndEntry;
+import org.corvine.demo.domain.Item;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.messaging.Message;
@@ -13,8 +14,8 @@ import java.util.List;
 @Repository
 public class FeedRepository {
 
-    public List<String> findAllItems() {
-        List<String> items = new ArrayList<>();
+    public List<Item> findAllItems() {
+        List<Item> items = new ArrayList<>();
 
         ApplicationContext context = new ClassPathXmlApplicationContext("/feed/swoppy.xml");
 
@@ -26,7 +27,7 @@ public class FeedRepository {
             message = (Message<SyndEntry>) feedChannel.receive(3000);
             if (message != null) {
                 SyndEntry entry = message.getPayload();
-                items.add(entry.getTitle());
+                items.add(new Item(entry.getTitle()));
             }
         } while (message != null);
 

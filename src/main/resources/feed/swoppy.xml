@@ -14,7 +14,8 @@
         <int:queue/>
     </int:channel>
 
-    <feed:inbound-channel-adapter id="feedAdapter" channel="swoppyFeed" url="http://www.musicswopshop.com.au/RSS">
+    <feed:inbound-channel-adapter id="feedAdapter" channel="swoppyFeed"
+                                  url="http://www.musicswopshop.com.au/RSS/NewArrivals">
         <int:poller fixed-rate="30000" max-messages-per-poll="10"/>
     </feed:inbound-channel-adapter>
 
