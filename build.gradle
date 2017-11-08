@@ -45,8 +45,16 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('junit:junit')
 }
-//
-//sourceSets { test { java {
-//    compileClasspath += main.output + test.output
-//    runtimeClasspath += main.output + test.output
-//    srcDirs = ["test/unit/java"] } } }
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/unit/java', 'src/test/integration/java']
+        }
+    }
+}
