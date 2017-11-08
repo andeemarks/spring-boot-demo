@@ -30,7 +30,7 @@ public class AdminFunctionsIntegrationTest {
     public void shouldReturn200WhenSendingRequestToManagementEndpoint() throws Exception {
         @SuppressWarnings("rawtypes")
         ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-                "http://localhost:" + this.adminPort + "/info", Map.class);
+                "http://localhost:" + this.adminPort + "/admin/info", Map.class);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
