@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FeedRepositoryTest {
+public class FeedRepositoryIntegrationTest {
 
     @Autowired
     private FeedRepository repository;
@@ -21,6 +21,6 @@ public class FeedRepositoryTest {
     @Test
     public void feedListShouldShowItems() throws Exception {
         List<Item> items = repository.findAllItems();
-        assertTrue(items.size() > 0);
+        assertTrue("Not enough items found", items.size() > 0);
     }
 }
