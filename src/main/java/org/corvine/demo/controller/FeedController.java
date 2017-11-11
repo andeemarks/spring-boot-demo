@@ -2,12 +2,13 @@ package org.corvine.demo.controller;
 
 import org.corvine.demo.domain.Item;
 import org.corvine.demo.repository.FeedRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class FeedController {
     private FeedRepository feedRepository;
 
@@ -16,10 +17,13 @@ public class FeedController {
     }
 
     @RequestMapping("/feed")
-    public String index() {
+    public String feed(Model model) {
         List<Item> items = feedRepository.findAllItems();
 
-        return items.toString();
+        model.addAttribute("name", "Andy");
+        model.addAttribute("items", items);
+
+        return "feed";
     }
 
 }
