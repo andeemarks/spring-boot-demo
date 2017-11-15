@@ -3,14 +3,18 @@
 <head>
     <title>Items</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-{{#items}}
-<h3><a href="{{link}}">{{title}}</a></h3>
-Category: {{category}}<br>
-<em>{{blurb}}</em><br>
-Price: {{price}}<br>
-{{url}}<br>
-{{/items}}
+<div id="container-fluid">
+    {{#items}}
+    <h3><a href="{{link}}">{{title}}</a></h3>
+    Category: {{category}}<br>
+    <em>{{blurb}}</em><br>
+    Price: {{price}}<br>
+    {{url}}<br>
+    {{/items}}
+</div>
 </body>
 </html>
