@@ -28,7 +28,7 @@ public class Item {
         Pattern titleRE = Pattern.compile("(MSS\\s[\\d]*)\\s\\|\\s(.*)");
         Matcher m = titleRE.matcher(title);
         if (!m.matches()) {
-            throw new IllegalArgumentException(title + " cannot be parsed");
+            throw new IllegalArgumentException("Title: " + title + " cannot be parsed");
         }
         this.title = m.group(2);
         this.id = m.group(1);
@@ -38,7 +38,7 @@ public class Item {
         Pattern descriptionRE = Pattern.compile("<p>Filed under: (.*)<\\/p><p>(.*)<br \\/>Price: (.*)<a href=\"(.*)\"><br \\/>Read more ...<\\/a><\\/p>");
         Matcher m = descriptionRE.matcher(description);
         if (!m.matches()) {
-            throw new IllegalArgumentException(description + " cannot be parsed");
+            throw new IllegalArgumentException("Description: " + description + " cannot be parsed");
         }
         this.category = m.group(1);
         this.blurb = m.group(2);
