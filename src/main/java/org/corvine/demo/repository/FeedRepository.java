@@ -4,6 +4,7 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import org.corvine.demo.domain.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.messaging.Message;
@@ -17,6 +18,7 @@ import java.util.List;
 public class FeedRepository {
     private static final Logger log = LoggerFactory.getLogger(FeedRepository.class);
 
+    @Cacheable("items")
     public List<Item> findAllItems() {
         List<Item> items = new ArrayList<>();
 
@@ -30,7 +32,6 @@ public class FeedRepository {
             message = (Message<SyndEntry>) feedChannel.receive(3000);
             if (message != null) {
                 SyndEntry entry = message.getPayload();
-//                log.info(String.valueOf(entry));
                 items.add(new Item(entry.getTitle(), entry.getDescription().getValue(), entry.getLink()));
             }
         } while (message != null);
