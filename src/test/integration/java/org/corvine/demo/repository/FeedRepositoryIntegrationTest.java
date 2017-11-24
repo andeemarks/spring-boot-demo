@@ -21,6 +21,6 @@ public class FeedRepositoryIntegrationTest {
     @Test
     public void feedListShouldShowItems() throws Exception {
         List<Item> items = repository.findAllItems();
-        assertTrue("Not enough items found", items.size() > 0);
+        assertTrue("Not enough items found: " + items.size(), items.size() > 0);
     }
 }
