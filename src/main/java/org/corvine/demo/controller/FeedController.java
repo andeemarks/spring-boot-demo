@@ -1,12 +1,11 @@
 package org.corvine.demo.controller;
 
-import org.corvine.demo.domain.Item;
+import org.corvine.demo.domain.RecentItemList;
 import org.corvine.demo.repository.FeedRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -19,10 +18,10 @@ public class FeedController {
 
     @RequestMapping("/feed")
     public ModelAndView feed(Map<String, Object> model) {
-        List<Item> items = feedRepository.findAllItems();
+        RecentItemList list = feedRepository.findAllItems();
 
         model.put("name", "Andy");
-        model.put("items", items);
+        model.put("items", list.getItems());
 
         return new ModelAndView("feed", model);
     }

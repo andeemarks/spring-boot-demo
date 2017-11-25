@@ -91,4 +91,11 @@ public class Item {
     String getTitle() {
         return title;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

@@ -2,6 +2,7 @@ package org.corvine.demo.repository;
 
 import com.rometools.rome.feed.synd.SyndEntry;
 import org.corvine.demo.domain.Item;
+import org.corvine.demo.domain.RecentItemList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,16 +12,13 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.PollableChannel;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Repository
 public class FeedRepository {
     private static final Logger log = LoggerFactory.getLogger(FeedRepository.class);
 
     @Cacheable("items")
-    public List<Item> findAllItems() {
-        List<Item> items = new ArrayList<>();
+    public RecentItemList findAllItems() {
+        RecentItemList items = new RecentItemList();
 
         ApplicationContext context = new ClassPathXmlApplicationContext("/feed/swoppy.xml");
 
