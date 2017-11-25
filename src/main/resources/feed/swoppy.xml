@@ -16,7 +16,7 @@
 
     <feed:inbound-channel-adapter id="feedAdapter" channel="swoppyFeed"
                                   url="http://www.musicswopshop.com.au/RSS/NewArrivals">
-        <int:poller fixed-rate="30000" max-messages-per-poll="10"/>
+        <int:poller fixed-rate="30000" max-messages-per-poll="50"/>
     </feed:inbound-channel-adapter>
 
 </beans>
